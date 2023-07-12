@@ -35,16 +35,20 @@ const SubModuleMenuItem: React.FunctionComponent<SubModuleMenuItemProps> = (
             >
                 {menu.name}
             </Link>
-            <Menu.Button
-                className="inline text-sm group 
-                    font-medium font-semi-bold text-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white 
-                    focus-visible:ring-opacity-100 hover:text-white hover:bg-indigo-700"
-            >
-                <ChevronDownIcon
-                    className="ml-0 -mr-1 h-5 w-5 text-violet-200 hover:text-white mt-1 hover:scale-125"
-                    aria-hidden="true"
-                />
-            </Menu.Button>
+            {
+                menu && menu.menuItems.length > 0 && (
+                    <Menu.Button
+                        className="inline text-sm group 
+                            font-medium font-semi-bold text-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white 
+                            focus-visible:ring-opacity-100 hover:text-white hover:bg-indigo-700"
+                    >
+                        <ChevronDownIcon
+                            className="ml-0 -mr-1 h-5 w-5 text-violet-200 hover:text-white mt-1 hover:scale-125"
+                            aria-hidden="true"
+                        />
+                    </Menu.Button>
+                )
+            }
         </div>
       </div>
       <Transition
