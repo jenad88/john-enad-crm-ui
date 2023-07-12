@@ -1,17 +1,17 @@
 "use client";
 
-import SectionHeader, { SectionDef } from "../components/section-header";
+import SubModuleHeader, { SubModuleDef } from "../components/sub-module-header";
 
 export default function ContactsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const section: SectionDef = { moduleName: "CRM", name: "Contacts" };
+  const subModule: SubModuleDef = { moduleName: "CRM", name: "Contacts" };
   return (
     <>
       <section>
-        <SectionHeader section={section} />
+        <SubModuleHeader subModule={subModule} />
         {children}
       </section>
     </>

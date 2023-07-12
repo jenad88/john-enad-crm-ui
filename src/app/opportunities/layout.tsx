@@ -1,17 +1,17 @@
 "use client";
 
-import SectionHeader, { SectionDef } from "../components/section-header";
+import SubModuleHeader, { SubModuleDef } from "../components/sub-module-header";
 
 export default function OpportunitiesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const section: SectionDef = { moduleName: "CRM", name: "Opportunities" };
+  const subModule: SubModuleDef = { moduleName: "CRM", name: "Opportunities" };
   return (
     <>
       <section>
-        <SectionHeader section={section} />
+        <SubModuleHeader subModule={subModule} />
         {children}
       </section>
     </>
