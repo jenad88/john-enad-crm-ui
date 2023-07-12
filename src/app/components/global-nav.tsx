@@ -3,6 +3,10 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { MenuDef } from "@/app/components/sub-module-menu-item";
+import SubModuleMenu from "@/app/components/sub-module-menu";
+import { CRM_SUB_MODULE_MENU } from "@/app/constants/submodule/submodule-constants";
+
 export default function GlobalNav() {
   const [isOpen, setIsOpen] = useState(false);
   const close = () => setIsOpen(false);
@@ -23,50 +27,7 @@ export default function GlobalNav() {
           </div>
           <nav className="flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
-              <li>
-                <a
-                  href="/accounts"
-                  className="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                >
-                  Accounts
-                </a>
-                <a
-                  href="/contacts"
-                  className="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                >
-                  Contacts
-                </a>
-                <a
-                  href="/leads"
-                  className="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                >
-                  Leads
-                </a>
-                <a
-                  href="/opportunities"
-                  className="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                >
-                  Opportunities
-                </a>
-                <a
-                  href="/tasks"
-                  className="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                >
-                  Tasks
-                </a>
-                <a
-                  href="/calendar"
-                  className="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                >
-                  Calendar
-                </a>
-                <a
-                  href="/dashboard"
-                  className="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                >
-                  Dashboard
-                </a>
-              </li>
+              <SubModuleMenu menu={CRM_SUB_MODULE_MENU} />
             </ul>
           </nav>
         </div>
