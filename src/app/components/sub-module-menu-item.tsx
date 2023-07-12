@@ -22,10 +22,10 @@ const SubModuleMenuItem: React.FunctionComponent<SubModuleMenuItemProps> = (
   return (
     <Menu as="div" className="relative text-left">
       <div className="block w-full rounded-md">
-        <div className="flex group gap-x-1 leading-6 px-2 py-2 hover:text-white hover:bg-indigo-700 items-center">
+        <div className="flex group gap-x-1 leading-6 px-2 py-2 hover:text-white hover:bg-indigo-700 items-center justify-between">
             <Link
                 href={menu.href}
-                className="inline text-sm group 
+                className="inline-block w-full text-sm group 
                     font-medium font-semi-bold text-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white 
                     focus-visible:ring-opacity-100 hover:text-white hover:bg-indigo-700"
             >
