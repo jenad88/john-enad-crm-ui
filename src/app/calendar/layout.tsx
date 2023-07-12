@@ -1,17 +1,17 @@
 "use client";
 
-import SectionHeader, { SectionDef } from "../components/section-header";
+import SubModuleHeader, { SubModuleDef } from "../components/sub-module-header";
 
 export default function CalendarLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const section: SectionDef = { moduleName: "CRM", name: "Calendar" };
+  const subModule: SubModuleDef = { moduleName: "CRM", name: "Calendar" };
   return (
     <>
       <section>
-        <SectionHeader section={section} />
+        <SubModuleHeader subModule={subModule} />
         {children}
       </section>
     </>

@@ -1,16 +1,16 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
-export type SectionDef = {
+export type SubModuleDef = {
   moduleName: string;
   name: string;
 };
 
-type SectionProps = {
-  section: SectionDef;
+type SubModuleHeaderProps = {
+  subModule: SubModuleDef;
 };
 
-const SectionHeader: React.FunctionComponent<SectionProps> = (props) => {
-  const { section } = props;
+const SubModuleHeader: React.FunctionComponent<SubModuleHeaderProps> = (props) => {
+  const { subModule } = props;
 
   return (
     <div>
@@ -35,7 +35,7 @@ const SectionHeader: React.FunctionComponent<SectionProps> = (props) => {
                   href="#"
                   className="text-sm font-medium text-gray-500 hover:text-gray-700"
                 >
-                  {section.moduleName}
+                  {subModule.moduleName}
                 </a>
               </div>
             </li>
@@ -50,7 +50,7 @@ const SectionHeader: React.FunctionComponent<SectionProps> = (props) => {
                   aria-current="page"
                   className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
                 >
-                  {section.name}
+                  {subModule.name}
                 </a>
               </div>
             </li>
@@ -60,7 +60,7 @@ const SectionHeader: React.FunctionComponent<SectionProps> = (props) => {
       <div className="mt-2 md:flex md:items-center md:justify-between">
         <div className="min-w-0 flex-1">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-            {section.name}
+            {subModule.name}
           </h2>
         </div>
       </div>
@@ -68,4 +68,4 @@ const SectionHeader: React.FunctionComponent<SectionProps> = (props) => {
   );
 };
 
-export default SectionHeader;
+export default SubModuleHeader;
