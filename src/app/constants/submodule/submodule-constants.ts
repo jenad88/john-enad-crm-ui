@@ -3,7 +3,7 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
     name: "Accounts",
     href: "/accounts",
     menuItems: [
-      { name: "accounts 1", href: "#" },
+      { name: "View Accounts", href: "/accounts" },
       { name: "accounts 2", href: "#" },
       { name: "accounts 3", href: "#" },
       { name: "accounts 4", href: "#" },
@@ -15,7 +15,7 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
     name: "Contacts",
     href: "/contacts",
     menuItems: [
-      { name: "contacts 1", href: "#" },
+      { name: "View Contacts", href: "/contacts" },
       { name: "contacts 2", href: "#" },
       { name: "contacts 3", href: "#" },
       { name: "contacts 4", href: "#" },
@@ -27,7 +27,7 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
     name: "Leads",
     href: "/leads",
     menuItems: [
-      { name: "leads 1", href: "#" },
+      { name: "View Leads", href: "/leads" },
       { name: "leads 2", href: "#" },
       { name: "leads 3", href: "#" },
       { name: "leads 4", href: "#" },
@@ -39,7 +39,7 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
     name: "Opportunities",
     href: "/opportunities",
     menuItems: [
-      { name: "opportunities 1", href: "#" },
+      { name: "View Opportunities", href: "/opportunities" },
       { name: "opportunities 2", href: "#" },
       { name: "opportunities 3", href: "#" },
       { name: "opportunities 4", href: "#" },
@@ -51,7 +51,7 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
     name: "Tasks",
     href: "/tasks",
     menuItems: [
-      { name: "tasks 1", href: "#" },
+      { name: "View Tasks", href: "/tasks" },
       { name: "tasks 2", href: "#" },
       { name: "tasks 3", href: "#" },
       { name: "tasks 4", href: "#" },
@@ -63,7 +63,7 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
     name: "Calendar",
     href: "/calendar",
     menuItems: [
-      { name: "calendar 1", href: "#" },
+      { name: "View Calendar", href: "/calendar" },
       { name: "calendar 2", href: "#" },
       { name: "calendar 3", href: "#" },
       { name: "calendar 4", href: "#" },
@@ -75,7 +75,7 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
     name: "Dashboard",
     href: "/dashboard",
     menuItems: [
-      { name: "dashboard 1", href: "#" },
+      { name: "View Dashboard", href: "/dashboard" },
       { name: "dashboard 2", href: "#" },
       { name: "dashboard 3", href: "#" },
       { name: "dashboard 4", href: "#" },

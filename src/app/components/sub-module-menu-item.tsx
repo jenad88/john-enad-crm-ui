@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
+import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 export type MenuItemDef = {
@@ -24,18 +25,27 @@ const SubModuleMenuItem: React.FunctionComponent<SubModuleMenuItemProps> = (
 
   return (
     <Menu as="div" className="relative text-left">
-      <div>
-        <Menu.Button
-          className="inline-flex w-full rounded-md px-2 py-2 text-sm group gap-x-1 leading-6 
-                font-medium font-semi-bold text-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white 
-                focus-visible:ring-opacity-100 hover:text-white hover:bg-indigo-700"
-        >
-          {menu.name}
-          <ChevronDownIcon
-            className="ml-0 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100 mt-1"
-            aria-hidden="true"
-          />
-        </Menu.Button>
+      <div className="block w-full rounded-md">
+        <div className="flex group gap-x-1 leading-6 px-2 py-2 hover:text-white hover:bg-indigo-700 items-center">
+            <Link
+                href={menu.href}
+                className="inline text-sm group 
+                    font-medium font-semi-bold text-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white 
+                    focus-visible:ring-opacity-100 hover:text-white hover:bg-indigo-700"
+            >
+                {menu.name}
+            </Link>
+            <Menu.Button
+                className="inline text-sm group 
+                    font-medium font-semi-bold text-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white 
+                    focus-visible:ring-opacity-100 hover:text-white hover:bg-indigo-700"
+            >
+                <ChevronDownIcon
+                    className="ml-0 -mr-1 h-5 w-5 text-violet-200 hover:text-white mt-1 hover:scale-125"
+                    aria-hidden="true"
+                />
+            </Menu.Button>
+        </div>
       </div>
       <Transition
         as={Fragment}
@@ -50,18 +60,21 @@ const SubModuleMenuItem: React.FunctionComponent<SubModuleMenuItemProps> = (
           <div className="px-1 py-1">
             {menu.menuItems.map((item, index) => {
               return (
-                <Menu.Item key={index}>
-                  {({ active }) => (
-                    <a
-                      href={item.href}
-                      className={`${
-                        active ? "bg-violet-500 text-white" : "text-gray-900"
-                      } text-gray-800 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
-                    >
-                      {item.name}
-                    </a>
-                  )}
-                </Menu.Item>
+                <>
+                    <Menu.Item key={index}>
+                    {({ active }) => (
+                        <Link
+                            href={item.href}
+                            className={`${
+                                active ? "bg-violet-500 text-white" : "text-gray-900"
+                            } text-gray-800 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
+                            onClick={close}
+                        >
+                            {item.name}
+                        </Link>
+                    )}
+                    </Menu.Item>
+                </>
               );
             })}
           </div>
