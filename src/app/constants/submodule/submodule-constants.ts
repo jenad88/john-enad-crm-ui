@@ -1,5 +1,10 @@
 export const CRM_SUB_MODULE_MENU: MenuDef[] = [
   {
+    name: "Home",
+    href: "/",
+    menuItems: []
+  },
+  {
     name: "Accounts",
     href: "/accounts",
     menuItems: [
