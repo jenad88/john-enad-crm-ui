@@ -2,16 +2,12 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
-export type MenuItemDef = {
-  name: string;
-  href: string;
-};
+import MenuItem, { MenuItemDef } from "@/app/components/menu-item";
 
 export type MenuDef = {
   name: string;
   href: string;
-  menuItems: MenuItemDef[];
+  menuItems?: MenuItemDef[];
 };
 
 type SubModuleMenuItemProps = {
@@ -36,7 +32,7 @@ const SubModuleMenuItem: React.FunctionComponent<SubModuleMenuItemProps> = (
                 {menu.name}
             </Link>
             {
-                menu && menu.menuItems.length > 0 && (
+                menu && menu.menuItems && menu.menuItems.length > 0 && (
                     <Menu.Button
                         className="inline text-sm group 
                             font-medium font-semi-bold text-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white 
@@ -62,24 +58,8 @@ const SubModuleMenuItem: React.FunctionComponent<SubModuleMenuItemProps> = (
       >
         <Menu.Items className="absolute left-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
           <div className="px-1 py-1">
-            {menu.menuItems.map((item, index) => {
-              return (
-                <>
-                    <Menu.Item key={index}>
-                    {({ active }) => (
-                        <Link
-                            href={item.href}
-                            className={`${
-                                active ? "bg-violet-500 text-white" : "text-gray-900"
-                            } text-gray-800 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
-                            onClick={close}
-                        >
-                            {item.name}
-                        </Link>
-                    )}
-                    </Menu.Item>
-                </>
-              );
+            {menu && menu.menuItems && menu.menuItems.map((item, index) => {
+              return <MenuItem key={index} item={item} />
             })}
           </div>
         </Menu.Items>
