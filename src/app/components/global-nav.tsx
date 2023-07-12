@@ -25,11 +25,7 @@ export default function GlobalNav() {
               <h2>LOGO</h2>
             </Link>
           </div>
-          <nav className="flex flex-1 flex-col">
-            <ul role="list" className="flex flex-1 flex-col gap-y-7">
-              <SubModuleMenu menu={CRM_SUB_MODULE_MENU} />
-            </ul>
-          </nav>
+          <SubModuleMenu menu={CRM_SUB_MODULE_MENU} />
         </div>
       </div>
     </>

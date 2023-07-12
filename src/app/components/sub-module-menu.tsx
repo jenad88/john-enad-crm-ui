@@ -7,15 +7,25 @@ type SubModuleMenuProps = {
 const SubModuleMenu: React.FunctionComponent<SubModuleMenuProps> = (props) => {
   const { menu } = props;
 
-  return (
-    <li>
-      {menu &&
-        menu.length > 0 &&
-        menu.map((item, index) => {
-          return <SubModuleMenuItem key={item.name} menu={item} />;
-        })}
-    </li>
-  );
+  if (menu && menu.length > 0) {
+    return (
+        <nav className="flex flex-1 flex-col">
+            <ul role="list" className="flex flex-1 flex-col">
+                {
+                    menu.map((item, index) => {
+                        return (
+                            <li key={index}>
+                                <SubModuleMenuItem menu={item} />
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </nav>
+    )
+  }
+
+  return null;
 };
 
 export default SubModuleMenu;
