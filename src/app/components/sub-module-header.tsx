@@ -9,7 +9,9 @@ type SubModuleHeaderProps = {
   subModule: SubModuleDef;
 };
 
-const SubModuleHeader: React.FunctionComponent<SubModuleHeaderProps> = (props) => {
+const SubModuleHeader: React.FunctionComponent<SubModuleHeaderProps> = (
+  props,
+) => {
   const { subModule } = props;
 
   return (
