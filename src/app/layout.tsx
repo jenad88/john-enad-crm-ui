@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import GlobalNav from '@/app/components/global-nav'
+import GlobalNav from "@/app/components/global-nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +22,7 @@ export default function RootLayout({
 
         <div className="lg:pl-72">
           <main className="py-10">
-            <div className="px-4 sm:px-6 lg:px-8">
-                {children}
-            </div>
+            <div className="px-4 sm:px-6 lg:px-8">{children}</div>
           </main>
         </div>
       </body>
