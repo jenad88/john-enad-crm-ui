@@ -10,9 +10,9 @@ export default function AccountsLayout({
   const subModule: SubModuleDef = { moduleName: "CRM", name: "Accounts" };
   return (
     <>
-      <section>
+      <section className="m-3">
         <SubModuleHeader subModule={subModule} />
-        {children}
+        <div className="px-4">{children}</div>
       </section>
     </>
   );

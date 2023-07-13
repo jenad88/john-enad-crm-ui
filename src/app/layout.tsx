@@ -1,7 +1,10 @@
+"use client";
+
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import GlobalNav from "@/app/components/global-nav";
+import SubModuleHeaderBar from "./components/sub-module-header-bar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +24,9 @@ export default function RootLayout({
         <GlobalNav />
 
         <div className="lg:pl-72 bg-gray-100">
-          <main className="py-10">
-            <div className="px-4">{children}</div>
+          <main className="pt-0 pb-10">
+            <SubModuleHeaderBar />
+            <div className="px-0">{children}</div>
           </main>
         </div>
       </body>

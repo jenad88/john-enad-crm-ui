@@ -29,7 +29,7 @@ const SubModuleHeader: React.FunctionComponent<SubModuleHeaderProps> = (
             Back
           </a>
         </nav>
-        <nav className="hidden sm:flex" aria-label="Breadcrumb">
+        <nav className="hidden sm:flex px-4 py-4" aria-label="Breadcrumb">
           <ol role="list" className="flex items-center space-x-4">
             <li>
               <div className="flex">
@@ -59,7 +59,7 @@ const SubModuleHeader: React.FunctionComponent<SubModuleHeaderProps> = (
           </ol>
         </nav>
       </div>
-      <div className="mt-2 md:flex md:items-center md:justify-between">
+      <div className="mt-2 md:flex md:items-center md:justify-between px-4">
         <div className="min-w-0 flex-1">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
             {subModule.name}

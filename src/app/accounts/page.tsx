@@ -1,3 +1,7 @@
 export default function AccountsPage() {
-  return <div>Accounts Page</div>;
+  return (
+    <>
+      <h1>Accounts Page</h1>
+    </>
+  );
 }

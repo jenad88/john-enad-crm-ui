@@ -10,9 +10,9 @@ export default function LeadsLayout({
   const subModule: SubModuleDef = { moduleName: "CRM", name: "Leads" };
   return (
     <>
-      <section>
+      <section className="m-3">
         <SubModuleHeader subModule={subModule} />
-        {children}
+        <div className="px-4">{children}</div>
       </section>
     </>
   );
