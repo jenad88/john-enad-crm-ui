@@ -10,9 +10,9 @@ export default function TasksLayout({
   const subModule: SubModuleDef = { moduleName: "CRM", name: "Tasks" };
   return (
     <>
-      <section>
+      <section className="m-3">
         <SubModuleHeader subModule={subModule} />
-        {children}
+        <div className="px-4">{children}</div>
       </section>
     </>
   );

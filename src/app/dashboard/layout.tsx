@@ -10,9 +10,9 @@ export default function DashboardLayout({
   const subModule: SubModuleDef = { moduleName: "CRM", name: "Dashboard" };
   return (
     <>
-      <section>
+      <section className="m-3">
         <SubModuleHeader subModule={subModule} />
-        {children}
+        <div className="px-4">{children}</div>
       </section>
     </>
   );
