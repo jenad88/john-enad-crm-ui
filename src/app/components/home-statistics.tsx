@@ -11,7 +11,7 @@ export default function HomeStatistics() {
       <h3 className="text-base font-semibold leading-6 text-gray-900">
         Last 30 days
       </h3>
-      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-4">
+      <dl className="mt-5 grid grid-cols-2 gap-5 md:grid-cols-4">
         {stats.map((item) => (
           <div
             key={item.name}
