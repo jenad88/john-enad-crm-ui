@@ -20,9 +20,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <GlobalNav />
 
-        <div className="lg:pl-72">
+        <div className="lg:pl-72 bg-gray-100">
           <main className="py-10">
-            <div className="px-4 sm:px-6 lg:px-8">{children}</div>
+            <div className="px-4">{children}</div>
           </main>
         </div>
       </body>
