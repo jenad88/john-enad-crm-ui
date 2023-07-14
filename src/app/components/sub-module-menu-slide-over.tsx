@@ -3,20 +3,20 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 type SubModuleMenuSlideOverProps = {
-  open: string | null;
-  setOpen: (value: string | null) => void;
+  sideOver: string | null;
+  setSideOver: (value: string | null) => void;
 };
 
 const SubModuleMenuSlideOver: React.FunctionComponent<
   SubModuleMenuSlideOverProps
 > = (props) => {
-  const { open, setOpen } = props;
+  const { sideOver, setSideOver } = props;
   const close = (value: boolean) => {
-    setOpen(null);
+    setSideOver(null);
   };
 
   return (
-    <Transition.Root show={open != null} as={Fragment}>
+    <Transition.Root show={sideOver != null} as={Fragment}>
       <Dialog as="div" className="relative z-40" onClose={close}>
         <div className="fixed inset-0" />
         <div className="fixed inset-0 overflow-hidden">
@@ -36,7 +36,7 @@ const SubModuleMenuSlideOver: React.FunctionComponent<
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-gray-200">
-                          {open}
+                          {sideOver}
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
                           <button

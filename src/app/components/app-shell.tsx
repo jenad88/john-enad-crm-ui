@@ -1,14 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { classNames } from "../_util/utils";
 
 import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Menu, Transition } from "@headlessui/react";
 
-import SideBarTransition from "@/app/components/side-bar-transition";
+import MobileNav from "@/app/components/mobile-nav";
 
-import SubModuleMenu from "@/app/components/sub-module-menu";
 import { CRM_SUB_MODULE_MENU } from "@/app/constants/submodule/submodule-constants";
 
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -17,6 +15,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
 import SubModuleMenuSlideOver from "./sub-module-menu-slide-over";
+import DesktopNav from "./desktop-nav";
 
 const userNavigation = [
   { name: "Your profile", href: "#" },
@@ -30,59 +29,27 @@ export default function ApplicationShell({
 }) {
   const [sideBarOpen, setSideBarOpen] = useState<boolean>(false);
   const [currentSideOver, setCurrentSideOver] = useState<string | null>(null);
-  const closeSideBar = () => setSideBarOpen(false);
+  // const closeSideBar = () => setSideBarOpen(false);
 
   return (
     <>
-      <SideBarTransition
+      <MobileNav
         items={CRM_SUB_MODULE_MENU}
         sideBarOpen={sideBarOpen}
         setSideBarOpen={setSideBarOpen}
       />
       <SubModuleMenuSlideOver
-        open={currentSideOver}
-        setOpen={setCurrentSideOver}
+        sideOver={currentSideOver}
+        setSideOver={setCurrentSideOver}
       />
 
-      <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
-        DESKTOP
-        <div className="flex h-16 shrink-0 items-center justify-center text-white">
-          LOGO
-        </div>
-        <nav className="mt-8">
-          <ul role="list" className="flex flex-col items-center space-y-1">
-            {CRM_SUB_MODULE_MENU.map((item) => (
-              <li key={item.name}>
-                <button
-                  type="button"
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-800 text-white"
-                      : "text-gray-400 hover:text-white hover:bg-gray-800",
-                    "group flex gap-x-3 rounded-md p-3 text-sm leading-6 font-semibold",
-                  )}
-                  onClick={() => setCurrentSideOver(item.name)}
-                >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </button>
-                {/* <a
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-800 text-white"
-                      : "text-gray-400 hover:text-white hover:bg-gray-800",
-                    "group flex gap-x-3 rounded-md p-3 text-sm leading-6 font-semibold",
-                  )}
-                >
-                  <item.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
-                  <span className="sr-only">{item.name}</span>
-                </a> */}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+      <DesktopNav
+        items={CRM_SUB_MODULE_MENU}
+        sideBarOpen={sideBarOpen}
+        setSideBarOpen={setSideBarOpen}
+        sideOver={currentSideOver}
+        setSideOver={setCurrentSideOver}
+      />
 
       <div className="lg:pl-20">
         <div className="sticky top-0 z-30 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">

@@ -1,24 +1,18 @@
 import { classNames } from "../_util/utils";
 
-import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
-import {
-  CRM_SUB_MODULE_MENU,
-  CRM_SUB_MODULE_MENU_TYPE,
-} from "../constants/submodule/submodule-constants";
+import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import exp from "constants";
+import { MenuDef } from "./sub-module-menu-item";
 
-type SideBarTransitionProps = {
-  items: CRM_SUB_MODULE_MENU_TYPE[];
+type MobileNavProps = {
+  items: MenuDef[];
   sideBarOpen: boolean;
   setSideBarOpen: (open: boolean) => void;
 };
 
-const SideBarTransition: React.FunctionComponent<SideBarTransitionProps> = (
-  props,
-) => {
+const MobileNav: React.FunctionComponent<MobileNavProps> = (props) => {
   const { items, sideBarOpen, setSideBarOpen } = props;
 
   return (
@@ -112,4 +106,4 @@ const SideBarTransition: React.FunctionComponent<SideBarTransitionProps> = (
   );
 };
 
-export default SideBarTransition;
+export default MobileNav;
