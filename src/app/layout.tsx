@@ -3,8 +3,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import GlobalNav from "@/app/components/global-nav";
-import SubModuleHeaderBar from "./components/sub-module-header-bar";
+
+import { useState } from "react";
+import ApplicationShell from "./components/app-shell";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,17 +19,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <GlobalNav />
-
-        <div className="lg:pl-72 bg-gray-100">
-          <main className="pt-0 pb-10">
-            <SubModuleHeaderBar />
-            <div className="px-0">{children}</div>
+        <ApplicationShell>
+          <main className="xl:pl-1">
+            <div className="px-4 py-10 sm:px-6 lg:px-6 lg:py-6">{children}</div>
           </main>
-        </div>
+        </ApplicationShell>
       </body>
     </html>
   );
