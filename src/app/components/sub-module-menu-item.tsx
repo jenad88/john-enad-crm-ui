@@ -24,6 +24,7 @@ const SubModuleMenuItem: React.FunctionComponent<SubModuleMenuItemProps> = (
   return (
     <Menu as="div" className="relative text-left">
       <div className="block w-full rounded-md">
+        asdf
         <div className="flex group gap-x-1 leading-6 px-2 py-2 hover:text-white hover:bg-indigo-700 items-center justify-between">
           <Link
             href={menu.href}

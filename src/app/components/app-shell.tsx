@@ -7,7 +7,7 @@ import MobileNav from "@/app/components/mobile-nav";
 import SubModuleMenuSlideOver from "@/app/components/sub-module-menu-slide-over";
 import DesktopNav from "@/app/components/desktop-nav";
 import HeaderBar from "@/app/components/header-bar";
-import { MenuDef } from "./sub-module-menu-item";
+import { MenuDef } from "@/app/components/sub-module-menu-item";
 
 const userNavigation = [
   { name: "Your profile", href: "#" },
