@@ -1,60 +1,59 @@
-"use client"
+"use client";
 
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from "react";
 
 export type PERSON_TYPE = {
-    name: string;
-    title: string;
-    email: string;
-    role: string;
-}
+  name: string;
+  title: string;
+  email: string;
+  role: string;
+};
 
-const people : PERSON_TYPE[] = [
+const people: PERSON_TYPE[] = [
   {
-    name: 'Michael Cooper',
-    title: 'Front-end Developer',
-    email: 'michael.cooper@example.com',
-    role: 'Member',
+    name: "Michael Cooper",
+    title: "Front-end Developer",
+    email: "michael.cooper@example.com",
+    role: "Member",
   },
   {
-    name: 'Sandra Hawkins',
-    title: 'Java Developer',
-    email: 'sandra.hawkins@example.com',
-    role: 'Member',
+    name: "Sandra Hawkins",
+    title: "Java Developer",
+    email: "sandra.hawkins@example.com",
+    role: "Member",
   },
-]
+];
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function LeadView() {
-  const checkbox = useRef<HTMLInputElement>(null)
-  const [checked, setChecked] = useState(false)
-  const [indeterminate, setIndeterminate] = useState(false)
-  const [selectedPeople, setSelectedPeople] = useState<PERSON_TYPE[]>([])
+  const checkbox = useRef<HTMLInputElement>(null);
+  const [checked, setChecked] = useState(false);
+  const [indeterminate, setIndeterminate] = useState(false);
+  const [selectedPeople, setSelectedPeople] = useState<PERSON_TYPE[]>([]);
 
   useLayoutEffect(() => {
-    const isIndeterminate = selectedPeople.length > 0 && selectedPeople.length < people.length
-    setChecked(selectedPeople.length === people.length)
-    setIndeterminate(isIndeterminate)
+    const isIndeterminate =
+      selectedPeople.length > 0 && selectedPeople.length < people.length;
+    setChecked(selectedPeople.length === people.length);
+    setIndeterminate(isIndeterminate);
     if (checkbox.current) {
-        checkbox.current.indeterminate = isIndeterminate
+      checkbox.current.indeterminate = isIndeterminate;
     }
-  }, [selectedPeople])
+  }, [selectedPeople]);
 
   function toggleAll() {
-    setSelectedPeople(checked || indeterminate ? [] : people)
-    setChecked(!checked && !indeterminate)
-    setIndeterminate(false)
+    setSelectedPeople(checked || indeterminate ? [] : people);
+    setChecked(!checked && !indeterminate);
+    setIndeterminate(false);
   }
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
-        <div className="sm:flex-auto">
-
-        </div>
+        <div className="sm:flex-auto"></div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           <button
             type="button"
@@ -96,26 +95,48 @@ export default function LeadView() {
                         onChange={toggleAll}
                       />
                     </th>
-                    <th scope="col" className="min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900">
+                    <th
+                      scope="col"
+                      className="min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900"
+                    >
                       Name
                     </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
                       Title
                     </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
                       Email
                     </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
                       Role
                     </th>
-                    <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-3">
+                    <th
+                      scope="col"
+                      className="relative py-3.5 pl-3 pr-4 sm:pr-3"
+                    >
                       <span className="sr-only">Edit</span>
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {people.map((person) => (
-                    <tr key={person.email} className={selectedPeople.includes(person) ? 'bg-gray-50' : undefined}>
+                    <tr
+                      key={person.email}
+                      className={
+                        selectedPeople.includes(person)
+                          ? "bg-gray-50"
+                          : undefined
+                      }
+                    >
                       <td className="relative px-7 sm:w-12 sm:px-6">
                         {selectedPeople.includes(person) && (
                           <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
@@ -129,24 +150,35 @@ export default function LeadView() {
                             setSelectedPeople(
                               e.target.checked
                                 ? [...selectedPeople, person]
-                                : selectedPeople.filter((p) => p !== person)
+                                : selectedPeople.filter((p) => p !== person),
                             )
                           }
                         />
                       </td>
                       <td
                         className={classNames(
-                          'whitespace-nowrap py-4 pr-3 text-sm font-medium',
-                          selectedPeople.includes(person) ? 'text-indigo-600' : 'text-gray-900'
+                          "whitespace-nowrap py-4 pr-3 text-sm font-medium",
+                          selectedPeople.includes(person)
+                            ? "text-indigo-600"
+                            : "text-gray-900",
                         )}
                       >
                         {person.name}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.title}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {person.title}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {person.email}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {person.role}
+                      </td>
                       <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                        <a
+                          href="#"
+                          className="text-indigo-600 hover:text-indigo-900"
+                        >
                           Edit<span className="sr-only">, {person.name}</span>
                         </a>
                       </td>
@@ -159,5 +191,5 @@ export default function LeadView() {
         </div>
       </div>
     </div>
-  )
+  );
 }
