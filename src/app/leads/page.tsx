@@ -9,8 +9,10 @@ export const metadata: Metadata = {
 export default function LeadsPage() {
   return (
     <>
-      <div>Leads Page</div>
-      <LeadView />
+      <div className="w-full bg-white mt-5">
+        <div>Leads Page</div>
+        <LeadView />
+      </div>
     </>
   );
 }

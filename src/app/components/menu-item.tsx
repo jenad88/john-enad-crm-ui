@@ -2,8 +2,10 @@ import { Menu } from "@headlessui/react";
 import Link from "next/link";
 
 export type MenuItemDef = {
+  id?: string;
   name: string;
   href?: string;
+  itemType?: string;
 };
 
 const MenuItem = (props: any) => {
