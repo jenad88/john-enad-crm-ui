@@ -1,12 +1,34 @@
+import {
+  Bars3Icon,
+  BellIcon,
+  CalendarIcon,
+  ChartPieIcon,
+  DocumentDuplicateIcon,
+  FolderIcon,
+  HomeIcon,
+  UsersIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/20/solid";
+
+import { MenuDef } from "@/app/components/sub-module-menu-item";
+
 export const CRM_SUB_MODULE_MENU: MenuDef[] = [
   {
     name: "Home",
     href: "/",
+    icon: HomeIcon,
+    current: true,
     menuItems: [],
   },
   {
     name: "Accounts",
     href: "/accounts",
+    icon: UsersIcon,
+    current: false,
     menuItems: [
       { name: "+ New Account", href: "/accounts/create" },
       {
@@ -25,6 +47,8 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
   {
     name: "Contacts",
     href: "/contacts",
+    icon: FolderIcon,
+    current: false,
     menuItems: [
       { name: "+ New Contact", href: "/contacts/create" },
       {
@@ -43,6 +67,8 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
   {
     name: "Leads",
     href: "/leads",
+    icon: UsersIcon,
+    current: false,
     menuItems: [
       { name: "+ New Lead", href: "/leads/create" },
       {
@@ -61,6 +87,8 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
   {
     name: "Opportunities",
     href: "/opportunities",
+    icon: DocumentDuplicateIcon,
+    current: false,
     menuItems: [
       { name: "+ New Opportunity", href: "/opportunities/create" },
       {
@@ -79,6 +107,8 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
   {
     name: "Tasks",
     href: "/tasks",
+    icon: ChartPieIcon,
+    current: false,
     menuItems: [
       { name: "+ New Task", href: "/tasks/create" },
       {
@@ -97,6 +127,8 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
   {
     name: "Calendar",
     href: "/calendar",
+    icon: CalendarIcon,
+    current: false,
     menuItems: [
       { name: "+ New Calendar Entry", href: "/calendar/create" },
       {
@@ -115,6 +147,8 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
   {
     name: "Dashboard",
     href: "/dashboard",
+    icon: ChartPieIcon,
+    current: false,
     menuItems: [
       { name: "View Dashboard", href: "/dashboard" },
       {

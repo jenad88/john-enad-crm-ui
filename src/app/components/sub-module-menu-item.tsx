@@ -7,6 +7,8 @@ import MenuItem, { MenuItemDef } from "@/app/components/menu-item";
 export type MenuDef = {
   name: string;
   href: string;
+  icon: any;
+  current: boolean;
   menuItems?: MenuItemDef[];
 };
 

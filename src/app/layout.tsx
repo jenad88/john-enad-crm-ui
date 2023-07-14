@@ -25,8 +25,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ApplicationShell>
-          <main className="xl:pl-1">
-            <div className="px-4 py-10 sm:px-6 lg:px-6 lg:py-6">{children}</div>
+          <main>
+            <div>{children}</div>
           </main>
         </ApplicationShell>
       </body>

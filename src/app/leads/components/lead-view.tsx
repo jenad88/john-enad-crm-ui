@@ -51,7 +51,7 @@ export default function LeadView() {
   }
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="sm:px-6">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto"></div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -65,7 +65,7 @@ export default function LeadView() {
       </div>
       <div className="mt-8 flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <div className="inline-block min-w-full py-2 align-middle sm:px-4 lg:px-4">
             <div className="relative">
               {selectedPeople.length > 0 && (
                 <div className="absolute left-14 top-0 flex h-12 items-center space-x-3 bg-white sm:left-12">
