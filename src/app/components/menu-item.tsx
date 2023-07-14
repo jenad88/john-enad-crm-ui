@@ -17,8 +17,8 @@ const MenuItem = (props: any) => {
         <Link
           href={item.href}
           className={`${
-            active ? "bg-violet-500 text-white" : "text-gray-900"
-          } text-gray-800 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
+            active ? "bg-violet-500 text-red-bg-500" : "text-white"
+          } text-gray-200 hover:text-gray-800 hover:bg-gray-100 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`}
           onClick={close}
         >
           {item.name}
