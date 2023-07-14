@@ -1,16 +1,20 @@
 import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, Menu } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+
+import { MenuDef } from "./sub-module-menu-item";
+import MenuItem from "@/app/components/menu-item";
 
 type SubModuleMenuSlideOverProps = {
   sideOver: string | null;
   setSideOver: (value: string | null) => void;
+  menu: MenuDef | null;
 };
 
 const SubModuleMenuSlideOver: React.FunctionComponent<
   SubModuleMenuSlideOverProps
 > = (props) => {
-  const { sideOver, setSideOver } = props;
+  const { sideOver, setSideOver, menu } = props;
   const close = (value: boolean) => {
     setSideOver(null);
   };
@@ -32,7 +36,7 @@ const SubModuleMenuSlideOver: React.FunctionComponent<
                 leaveTo="-translate-x-full"
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                  <div className="flex h-full flex-col overflow-y-scroll bg-gray-900 text-gray-200 py-6 shadow-xl w-[90%]">
+                  <div className="flex h-full flex-col bg-gray-900 text-gray-200 py-6 shadow-xl pr-14">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-gray-200">
@@ -50,8 +54,16 @@ const SubModuleMenuSlideOver: React.FunctionComponent<
                         </div>
                       </div>
                     </div>
-                    <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                      content here
+                    <div className="relative mt-6 flex-1 px-2 sm:px-4">
+                      <Menu as="div" className="relative text-left">
+                        <div className="px-1 py-1">
+                          {menu &&
+                            menu.menuItems &&
+                            menu.menuItems.map((item, index) => {
+                              return <MenuItem key={index} item={item} />;
+                            })}
+                        </div>
+                      </Menu>
                     </div>
                   </div>
                 </Dialog.Panel>
