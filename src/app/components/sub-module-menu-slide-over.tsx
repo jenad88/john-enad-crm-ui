@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition, Menu } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-import { MenuDef } from "./sub-module-menu-item";
+import { MenuDef } from "@/app/components/sub-module-menu-item";
 import MenuItem from "@/app/components/menu-item";
 
 type SubModuleMenuSlideOverProps = {
@@ -15,13 +15,11 @@ const SubModuleMenuSlideOver: React.FunctionComponent<
   SubModuleMenuSlideOverProps
 > = (props) => {
   const { sideOver, setSideOver, menu } = props;
-  const close = (value: boolean) => {
-    setSideOver(null);
-  };
+  const closeDialog = (value: boolean) => undefined;
 
   return (
     <Transition.Root show={sideOver != null} as={Fragment}>
-      <Dialog as="div" className="relative z-40" onClose={close}>
+      <Dialog as="div" className="relative z-40" onClose={closeDialog}>
         <div className="fixed inset-0" />
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden w-full bg-red-5">
@@ -46,7 +44,7 @@ const SubModuleMenuSlideOver: React.FunctionComponent<
                           <button
                             type="button"
                             className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                            onClick={() => close(true)}
+                            onClick={() => setSideOver(null)}
                           >
                             <span className="sr-only">Close panel</span>
                             <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -60,7 +58,13 @@ const SubModuleMenuSlideOver: React.FunctionComponent<
                           {menu &&
                             menu.menuItems &&
                             menu.menuItems.map((item, index) => {
-                              return <MenuItem key={index} item={item} />;
+                              return (
+                                <MenuItem
+                                  key={index}
+                                  item={item}
+                                  setSideOver={setSideOver}
+                                />
+                              );
                             })}
                         </div>
                       </Menu>
