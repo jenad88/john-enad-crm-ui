@@ -22,7 +22,6 @@ export const CRM_SUB_MODULE_MENU: MenuDef[] = [
     href: "/",
     icon: HomeIcon,
     current: true,
-    menuItems: [],
   },
   {
     name: "Accounts",
