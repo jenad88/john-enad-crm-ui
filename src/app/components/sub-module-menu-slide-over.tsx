@@ -23,12 +23,12 @@ const SubModuleMenuSlideOver: React.FunctionComponent<
         <div className="fixed inset-0" />
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden w-full bg-red-5">
-            <div className="pointer-events-none fixed inset-y-0 right-0 flex lg:w-[20%] left-0 overflow-hidden">
+            <div className="pointer-events-none fixed inset-y-0 right-0 flex md:w-[350px] left-0 overflow-hidden">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-out duration-500 sm:duration-700"
                 enterFrom="-translate-x-full"
-                enterTo="translate-x-20 left-32"
+                enterTo="translate-x-0 md:translate-x-20 left-32"
                 leave="transform transition ease-in duration-500 sm:duration-700"
                 leaveFrom="translate-x-32"
                 leaveTo="-translate-x-full"
