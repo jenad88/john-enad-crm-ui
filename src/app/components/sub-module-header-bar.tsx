@@ -10,15 +10,12 @@ import {
   ChevronDownIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
+import { classNames } from "@/app/_util/utils";
 
 const userNavigation = [
   { name: "Your profile", href: "#" },
   { name: "Sign out", href: "#" },
 ];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 const SubModuleHeaderBar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
