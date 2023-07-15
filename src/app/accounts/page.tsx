@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { GLOBAL } from "@/app/constants/global/global-constants";
+import AccountListView from "@/app/accounts/components/account-list-view";
 
 export const metadata: Metadata = {
   title: `${GLOBAL.appcd} Accounts`,
@@ -8,7 +9,10 @@ export const metadata: Metadata = {
 export default function AccountsPage() {
   return (
     <>
-      <h1>Accounts Page</h1>
+      <div className="w-full bg-white mt-5">
+        <div>Accounts Page</div>
+        <AccountListView />
+      </div>
     </>
   );
 }
