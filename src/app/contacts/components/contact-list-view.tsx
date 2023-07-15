@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import { classNames } from "@/app/_util/utils";
 
 export type PERSON_TYPE = {
   name: string;
@@ -23,10 +24,6 @@ const people: PERSON_TYPE[] = [
     role: "Member",
   },
 ];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function ContactListView() {
   const checkbox = useRef<HTMLInputElement>(null);
