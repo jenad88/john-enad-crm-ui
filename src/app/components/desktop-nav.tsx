@@ -1,23 +1,33 @@
 import { classNames } from "../_util/utils";
 import { MenuDef } from "./sub-module-menu-item";
+import { useRouter } from "next/navigation";
 
 type DesktopNavProps = {
   items: MenuDef[];
-  sideBarOpen: boolean;
   setSideBarOpen: (open: boolean) => void;
   sideOver: string | null;
   setSideOver: (value: string | null) => void;
 };
 
 const DesktopNav: React.FunctionComponent<DesktopNavProps> = (props) => {
-  const { items, sideBarOpen, setSideBarOpen, sideOver, setSideOver } = props;
+  const router = useRouter();
+  const { items, setSideBarOpen, sideOver, setSideOver } = props;
 
   const handleButtonClick = (name: string) => {
     if (sideOver === name) {
       setSideBarOpen(false);
       setSideOver(null);
     } else {
-      setSideOver(name);
+      const item = items.find((item) => item.name === name);
+      if (item) {
+        if (!item.menuItems) {
+          setSideBarOpen(false);
+          setSideOver(null);
+          router.push(item.href);
+        } else {
+          setSideOver(name);
+        }
+      }
     }
   };
 

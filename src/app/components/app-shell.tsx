@@ -47,7 +47,6 @@ export default function ApplicationShell({
 
       <DesktopNav
         items={CRM_SUB_MODULE_MENU}
-        sideBarOpen={sideBarOpen}
         setSideBarOpen={setSideBarOpen}
         sideOver={currentSideOver}
         setSideOver={setCurrentSideOver}
