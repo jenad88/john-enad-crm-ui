@@ -3,7 +3,7 @@
 import SubModuleHeader, { SubModuleDef } from "../components/sub-module-header";
 import React, { useContext } from "react";
 import AccountsProvider from "@/app/accounts/components/account-context";
-import NewAccountDialog from "./components/new-account-dialog";
+import NewAccountDialog from "@/app/accounts/components/new-account-dialog";
 
 export default function AccountsLayout({
   children,
