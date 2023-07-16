@@ -1,48 +1,37 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { classNames } from "@/app/_util/utils";
-
-export type PERSON_TYPE = {
-  name: string;
-  title: string;
-  email: string;
-  role: string;
-};
-
-const people: PERSON_TYPE[] = [
-  {
-    name: "Michael Cooper",
-    title: "Front-end Developer",
-    email: "michael.cooper@example.com",
-    role: "Member",
-  },
-  {
-    name: "Sandra Hawkins",
-    title: "Java Developer",
-    email: "sandra.hawkins@example.com",
-    role: "Member",
-  },
-];
+import { IAccount } from "@/app/accounts/model/models";
+import {
+  AccountsContext,
+  AccountsContextProps,
+  useAccountsContext,
+} from "@/app/accounts/components/account-context";
 
 export default function AccountListView() {
   const checkbox = useRef<HTMLInputElement>(null);
   const [checked, setChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
-  const [selectedPeople, setSelectedPeople] = useState<PERSON_TYPE[]>([]);
+  const [selectedAccounts, setSelectedAccounts] = useState<IAccount[]>([]);
+  const {
+    accounts,
+    showNewAccountModal: [showNewAccount, setShowNewAccount],
+  } = React.useContext(AccountsContext) as AccountsContextProps;
+  // const { accounts } = useAccountsContext();
 
   useLayoutEffect(() => {
     const isIndeterminate =
-      selectedPeople.length > 0 && selectedPeople.length < people.length;
-    setChecked(selectedPeople.length === people.length);
+      selectedAccounts.length > 0 && selectedAccounts.length < accounts.length;
+    setChecked(selectedAccounts.length === accounts.length);
     setIndeterminate(isIndeterminate);
     if (checkbox.current) {
       checkbox.current.indeterminate = isIndeterminate;
     }
-  }, [selectedPeople]);
+  }, [selectedAccounts, accounts]);
 
   function toggleAll() {
-    setSelectedPeople(checked || indeterminate ? [] : people);
+    setSelectedAccounts(checked || indeterminate ? [] : accounts);
     setChecked(!checked && !indeterminate);
     setIndeterminate(false);
   }
@@ -55,6 +44,7 @@ export default function AccountListView() {
           <button
             type="button"
             className="block rounded-md bg-indigo-600 px-3 py-1.5 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={() => setShowNewAccount(true)}
           >
             Add Account
           </button>
@@ -64,7 +54,7 @@ export default function AccountListView() {
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-4 lg:px-4">
             <div className="relative">
-              {selectedPeople.length > 0 && (
+              {selectedAccounts.length > 0 && (
                 <div className="absolute left-14 top-0 flex h-12 items-center space-x-3 bg-white sm:left-12">
                   <button
                     type="button"
@@ -96,25 +86,37 @@ export default function AccountListView() {
                       scope="col"
                       className="min-w-[12rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900"
                     >
-                      Name
+                      Account Name
                     </th>
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Title
+                      Billing State/Province
                     </th>
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Email
+                      Phone
                     </th>
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Role
+                      Type
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Owner First Name
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Owner Last Name
                     </th>
                     <th
                       scope="col"
@@ -125,29 +127,29 @@ export default function AccountListView() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
+                  {accounts.map((account) => (
                     <tr
-                      key={person.email}
+                      key={account.phone}
                       className={
-                        selectedPeople.includes(person)
+                        selectedAccounts.includes(account)
                           ? "bg-gray-50"
                           : undefined
                       }
                     >
                       <td className="relative px-7 sm:w-12 sm:px-6">
-                        {selectedPeople.includes(person) && (
+                        {selectedAccounts.includes(account) && (
                           <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
                         )}
                         <input
                           type="checkbox"
                           className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                          value={person.email}
-                          checked={selectedPeople.includes(person)}
+                          value={account.phone}
+                          checked={selectedAccounts.includes(account)}
                           onChange={(e) =>
-                            setSelectedPeople(
+                            setSelectedAccounts(
                               e.target.checked
-                                ? [...selectedPeople, person]
-                                : selectedPeople.filter((p) => p !== person),
+                                ? [...selectedAccounts, account]
+                                : selectedAccounts.filter((p) => p !== account),
                             )
                           }
                         />
@@ -155,28 +157,34 @@ export default function AccountListView() {
                       <td
                         className={classNames(
                           "whitespace-nowrap py-4 pr-3 text-sm font-medium",
-                          selectedPeople.includes(person)
+                          selectedAccounts.includes(account)
                             ? "text-indigo-600"
                             : "text-gray-900",
                         )}
                       >
-                        {person.name}
+                        {account.name}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.title}
+                        {account.state}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.email}
+                        {account.phone}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.role}
+                        {account.type}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {account.owner.firstName}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {account.owner.lastName}
                       </td>
                       <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
                         <a
                           href="#"
                           className="text-indigo-600 hover:text-indigo-900"
                         >
-                          Edit<span className="sr-only">, {person.name}</span>
+                          Edit<span className="sr-only">, {account.name}</span>
                         </a>
                       </td>
                     </tr>
