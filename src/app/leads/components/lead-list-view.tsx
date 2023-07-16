@@ -1,48 +1,36 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { classNames } from "@/app/_util/utils";
-
-export type PERSON_TYPE = {
-  name: string;
-  title: string;
-  email: string;
-  role: string;
-};
-
-const people: PERSON_TYPE[] = [
-  {
-    name: "Michael Cooper",
-    title: "Front-end Developer",
-    email: "michael.cooper@example.com",
-    role: "Member",
-  },
-  {
-    name: "Sandra Hawkins",
-    title: "Java Developer",
-    email: "sandra.hawkins@example.com",
-    role: "Member",
-  },
-];
+import { ILead } from "@/app/leads/model/models";
+import {
+  LeadsContext,
+  LeadsContextProps,
+  useLeadsContext,
+} from "@/app/leads/components/lead-context";
 
 export default function LeadListView() {
   const checkbox = useRef<HTMLInputElement>(null);
   const [checked, setChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
-  const [selectedPeople, setSelectedPeople] = useState<PERSON_TYPE[]>([]);
+  const [selectedLeads, setSelectedLeads] = useState<ILead[]>([]);
+  const {
+    leads,
+    showNewLeadModal: [showNewLead, setShowNewLead],
+  } = React.useContext(LeadsContext) as LeadsContextProps;
 
   useLayoutEffect(() => {
     const isIndeterminate =
-      selectedPeople.length > 0 && selectedPeople.length < people.length;
-    setChecked(selectedPeople.length === people.length);
+      selectedLeads.length > 0 && selectedLeads.length < leads.length;
+    setChecked(selectedLeads.length === leads.length);
     setIndeterminate(isIndeterminate);
     if (checkbox.current) {
       checkbox.current.indeterminate = isIndeterminate;
     }
-  }, [selectedPeople]);
+  }, [selectedLeads, leads]);
 
   function toggleAll() {
-    setSelectedPeople(checked || indeterminate ? [] : people);
+    setSelectedLeads(checked || indeterminate ? [] : leads);
     setChecked(!checked && !indeterminate);
     setIndeterminate(false);
   }
@@ -55,6 +43,7 @@ export default function LeadListView() {
           <button
             type="button"
             className="block rounded-md bg-indigo-600 px-3 py-1.5 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={() => setShowNewLead(true)}
           >
             Add Lead
           </button>
@@ -64,7 +53,7 @@ export default function LeadListView() {
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-4 lg:px-4">
             <div className="relative">
-              {selectedPeople.length > 0 && (
+              {selectedLeads.length > 0 && (
                 <div className="absolute left-14 top-0 flex h-12 items-center space-x-3 bg-white sm:left-12">
                   <button
                     type="button"
@@ -108,13 +97,37 @@ export default function LeadListView() {
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
+                      Company
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Phone
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Mobile
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
                       Email
                     </th>
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Role
+                      Lead Status
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Owner
                     </th>
                     <th
                       scope="col"
@@ -125,29 +138,27 @@ export default function LeadListView() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
+                  {leads.map((lead) => (
                     <tr
-                      key={person.email}
+                      key={lead.email}
                       className={
-                        selectedPeople.includes(person)
-                          ? "bg-gray-50"
-                          : undefined
+                        selectedLeads.includes(lead) ? "bg-gray-50" : undefined
                       }
                     >
                       <td className="relative px-7 sm:w-12 sm:px-6">
-                        {selectedPeople.includes(person) && (
+                        {selectedLeads.includes(lead) && (
                           <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
                         )}
                         <input
                           type="checkbox"
                           className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                          value={person.email}
-                          checked={selectedPeople.includes(person)}
+                          value={lead.email}
+                          checked={selectedLeads.includes(lead)}
                           onChange={(e) =>
-                            setSelectedPeople(
+                            setSelectedLeads(
                               e.target.checked
-                                ? [...selectedPeople, person]
-                                : selectedPeople.filter((p) => p !== person),
+                                ? [...selectedLeads, lead]
+                                : selectedLeads.filter((p) => p !== lead),
                             )
                           }
                         />
@@ -155,28 +166,40 @@ export default function LeadListView() {
                       <td
                         className={classNames(
                           "whitespace-nowrap py-4 pr-3 text-sm font-medium",
-                          selectedPeople.includes(person)
+                          selectedLeads.includes(lead)
                             ? "text-indigo-600"
                             : "text-gray-900",
                         )}
                       >
-                        {person.name}
+                        {lead.name}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.title}
+                        {lead.title}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.email}
+                        {lead.company}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.role}
+                        {lead.phone}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {lead.mobile}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {lead.email}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {lead.owner.firstName} {lead.owner.lastName}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {lead.status}
                       </td>
                       <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
                         <a
                           href="#"
                           className="text-indigo-600 hover:text-indigo-900"
                         >
-                          Edit<span className="sr-only">, {person.name}</span>
+                          Edit<span className="sr-only">, {lead.name}</span>
                         </a>
                       </td>
                     </tr>

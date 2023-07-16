@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 import {
-  AccountsContext,
-  AccountsContextProps,
-} from "@/app/accounts/components/account-context";
+  LeadsContext,
+  LeadsContextProps,
+} from "@/app/leads/components/lead-context";
 
-const NewAccountForm = () => {
+const NewLeadForm = () => {
   const {
-    saveAccount,
-    showNewAccountModal: [showNewAccount, setShowNewAccount],
-  } = React.useContext(AccountsContext) as AccountsContextProps;
+    saveLead,
+    showNewLeadModal: [showNewLead, setShowNewLead],
+  } = React.useContext(LeadsContext) as LeadsContextProps;
 
   return (
     <form>
@@ -16,180 +16,228 @@ const NewAccountForm = () => {
         <div className="border-b border-gray-900/10 pb-4">
           <p className="mt-1 text-sm leading-6 text-gray-600"></p>
           <div className="bg-gray-200 px-2 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
-            Account Information
+            Lead Information
           </div>
           <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 text-left">
-            <div className="grid grid-cols-1 content-baseline">
-              <div className="grid grid-cols-2">
+            <div className="grid grid-cols-1">
+              <div className="grid grid-cols-1">
                 <div className="mt-2">
                   <label
-                    htmlFor="accountName"
+                    htmlFor="leadStatus"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Account name
-                  </label>
-                </div>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="accountName"
-                    id="accountName"
-                    autoComplete="Account Name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2">
-                <div className="mt-2">
-                  <label
-                    htmlFor="accountType"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Type
+                    Lead Status
                   </label>
                 </div>
                 <div className="mt-2">
                   <select
-                    id="accountType"
-                    name="accountType"
-                    autoComplete="Account Type"
+                    id="leadStatus"
+                    name="leadStatus"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                   >
-                    <option>Customer</option>
-                    <option>Prospect</option>
+                    <option>-None-</option>
+                    <option>Unqualified</option>
+                    <option>New</option>
+                    <option>Working</option>
+                    <option>Nurturing</option>
+                    <option>Qualified</option>
                   </select>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-1">
                 <div className="mt-2">
                   <label
-                    htmlFor="webSite"
+                    htmlFor="salutation"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Web site
+                    Salutation
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <select
+                    id="salutation"
+                    name="salutation"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  >
+                    <option>-None-</option>
+                    <option>Mr.</option>
+                    <option>Ms.</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1">
+                <div className="mt-2">
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    First Name
                   </label>
                 </div>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="webSite"
-                    id="webSite"
+                    name="firstName"
+                    id="firstName"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-1">
                 <div className="mt-2">
                   <label
-                    htmlFor="description"
+                    htmlFor="middleName"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Description
+                    Middle Name
                   </label>
                 </div>
                 <div className="mt-2">
-                  <textarea
-                    id="description"
-                    name="description"
-                    rows={3}
+                  <input
+                    type="text"
+                    name="middleName"
+                    id="middleName"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    defaultValue={""}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1">
+                <div className="mt-2">
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Last Name
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1">
+                <div className="mt-2">
+                  <label
+                    htmlFor="suffix"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Suffix
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    name="suffix"
+                    id="suffix"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1">
+                <div className="mt-2">
+                  <label
+                    htmlFor="title"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Title
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
             </div>
             <div className="grid grid-cols-1">
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-1">
                 <div className="mt-2">
                   <label
                     htmlFor="owner"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Account Owner
+                    Lead Owner
                   </label>
                 </div>
                 <div className="mt-2">owner</div>
               </div>
 
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-1">
                 <div className="mt-2">
                   <label
-                    htmlFor="parentAccount"
+                    htmlFor="website"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Parent Account
+                    Website
                   </label>
                 </div>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="parentAccount"
-                    id="parentAccount"
-                    autoComplete="Parent Account"
+                    name="website"
+                    id="website"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-1">
                 <div className="mt-2">
                   <label
-                    htmlFor="phone"
+                    htmlFor="first-name"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  ></label>
+                </div>
+                <div className="mt-2"></div>
+              </div>
+
+              <div className="grid grid-cols-1">
+                <div className="mt-2">
+                  <label
+                    htmlFor="first-name"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  ></label>
+                </div>
+                <div className="mt-2"></div>
+              </div>
+
+              <div className="grid grid-cols-1">
+                <div className="mt-2">
+                  <label
+                    htmlFor="first-name"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  ></label>
+                </div>
+                <div className="mt-2"></div>
+              </div>
+
+              <div className="grid grid-cols-1">
+                <div className="mt-2">
+                  <label
+                    htmlFor="company"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Phone
+                    Company
                   </label>
                 </div>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="phone"
-                    id="phone"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2">
-                <div className="mt-2">
-                  <label
-                    htmlFor="industry"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Industry
-                  </label>
-                </div>
-                <div className="mt-2">
-                  <select
-                    id="industry"
-                    name="industry"
-                    autoComplete="industry"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                  >
-                    <option>Manufacturing</option>
-                    <option>Financial Services</option>
-                    <option>Technology</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2">
-                <div className="mt-2">
-                  <label
-                    htmlFor="employees"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Employees
-                  </label>
-                </div>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="employees"
-                    id="employees"
+                    name="company"
+                    id="company"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -207,17 +255,17 @@ const NewAccountForm = () => {
                 <div className="grid grid-cols-1">
                   <div className="mt-2">
                     <label
-                      htmlFor="billingAddress"
+                      htmlFor="address"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Billing Address
+                      Address
                     </label>
                   </div>
                   <div className="mt-2">
                     <input
                       type="text"
-                      name="billingAddress"
-                      id="billingAddress"
+                      name="address"
+                      id="address"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -226,16 +274,16 @@ const NewAccountForm = () => {
                 <div className="grid grid-cols-1">
                   <div className="mt-2">
                     <label
-                      htmlFor="billingStreet"
+                      htmlFor="street"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Billing Street
+                      Street
                     </label>
                   </div>
                   <div className="mt-2">
                     <textarea
-                      id="billingStreet"
-                      name="billingStreet"
+                      id="street"
+                      name="street"
                       rows={3}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       defaultValue={""}
@@ -247,17 +295,17 @@ const NewAccountForm = () => {
                   <div className="grid grid-cols-1">
                     <div className="mt-2">
                       <label
-                        htmlFor="billingCity"
+                        htmlFor="city"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        Billing City
+                        City
                       </label>
                     </div>
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="billingCity"
-                        id="billingCity"
+                        name="city"
+                        id="city"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -266,18 +314,18 @@ const NewAccountForm = () => {
                   <div className="grid grid-cols-1 ml-2">
                     <div className="mt-2">
                       <label
-                        htmlFor="billingState"
+                        htmlFor="state"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        Billing State/Province
+                        State/Province
                       </label>
                     </div>
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="billingState"
-                        id="billingState"
-                        autoComplete="Billing State/Province"
+                        name="state"
+                        id="state"
+                        autoComplete="State/Province"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -286,17 +334,17 @@ const NewAccountForm = () => {
                   <div className="grid grid-cols-1">
                     <div className="mt-2">
                       <label
-                        htmlFor="billingZip"
+                        htmlFor="zip"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        Billing Zip/Postal Code
+                        Zip/Postal Code
                       </label>
                     </div>
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="billingZip"
-                        id="billingZip"
+                        name="zip"
+                        id="zip"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -305,18 +353,18 @@ const NewAccountForm = () => {
                   <div className="grid grid-cols-1 ml-2">
                     <div className="mt-2">
                       <label
-                        htmlFor="billingCountry"
+                        htmlFor="country"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        Billing Country
+                        Country
                       </label>
                     </div>
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="billingCountry"
-                        id="billingCountry"
-                        autoComplete="Billing Country"
+                        name="country"
+                        id="country"
+                        autoComplete="Country"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -325,125 +373,7 @@ const NewAccountForm = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 content-baseline">
-              <div className="grid grid-cols-1">
-                <div className="grid grid-cols-1">
-                  <div className="mt-2">
-                    <label
-                      htmlFor="shippingAddress"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Shipping Address
-                    </label>
-                  </div>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      name="shippingAddress"
-                      id="shippingAddress"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1">
-                  <div className="mt-2">
-                    <label
-                      htmlFor="shippingStreet"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Shipping Street
-                    </label>
-                  </div>
-                  <div className="mt-2">
-                    <textarea
-                      id="shippingStreet"
-                      name="shippingStreet"
-                      rows={3}
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      defaultValue={""}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  <div className="grid grid-cols-1">
-                    <div className="mt-2">
-                      <label
-                        htmlFor="shippingCity"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Shipping City
-                      </label>
-                    </div>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="shippingCity"
-                        id="shippingCity"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 ml-2">
-                    <div className="mt-2">
-                      <label
-                        htmlFor="shippingState"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Shipping State/Province
-                      </label>
-                    </div>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="shippingState"
-                        id="shippingState"
-                        autoComplete="Shipping State/Province"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1">
-                    <div className="mt-2">
-                      <label
-                        htmlFor="shippingZip"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Shipping Zip/Postal Code
-                      </label>
-                    </div>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="shippingZip"
-                        id="shippingZip"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 ml-2">
-                    <div className="mt-2">
-                      <label
-                        htmlFor="shippingCountry"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Shipping Country
-                      </label>
-                    </div>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="shippingCountry"
-                        id="shippingCountry"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className="grid grid-cols-1"></div>
             </div>
           </div>
         </div>
@@ -453,14 +383,14 @@ const NewAccountForm = () => {
         <button
           type="button"
           className="inline-flex justify-center rounded-md bg-indigo-600 px-2 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2"
-          onClick={() => setShowNewAccount(false)}
+          onClick={() => setShowNewLead(false)}
         >
           Cancel
         </button>
         <button
           type="button"
           className="mt-3 inline-flex justify-center rounded-md bg-white px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0"
-          onClick={() => setShowNewAccount(false)}
+          onClick={() => setShowNewLead(false)}
         >
           Save
         </button>
@@ -469,4 +399,4 @@ const NewAccountForm = () => {
   );
 };
 
-export default NewAccountForm;
+export default NewLeadForm;
