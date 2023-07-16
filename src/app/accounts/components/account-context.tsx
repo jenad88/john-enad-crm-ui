@@ -69,7 +69,7 @@ const AccountsProvider: React.FC<{
         acct.name = updateAccount.name;
         acct.state = updateAccount.state;
         acct.phone = updateAccount.phone;
-        acct.type = acct.type;
+        acct.type = updateAccount.type;
         acct.owner = updateAccount.owner;
         setAccounts([...accounts]);
       }
