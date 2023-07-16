@@ -1,23 +1,23 @@
 import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
-  AccountsContext,
-  AccountsContextProps,
-} from "@/app/accounts/components/account-context";
-import NewAccountForm from "@/app/accounts/components/new-account-form";
+  ContactsContext,
+  ContactsContextProps,
+} from "@/app/contacts/components/contact-context";
+import NewContactForm from "@/app/contacts/components/new-contact-form";
 
-export default function NewAccountDialog(props: any) {
+export default function NewContactDialog(props: any) {
   const {
-    saveAccount,
-    showNewAccountModal: [showNewAccount, setShowNewAccount],
-  } = React.useContext(AccountsContext) as AccountsContextProps;
+    saveContact,
+    showNewContactModal: [showNewContact, setShowNewContact],
+  } = React.useContext(ContactsContext) as ContactsContextProps;
 
   return (
-    <Transition.Root show={showNewAccount} as={Fragment}>
+    <Transition.Root show={showNewContact} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-50"
-        onClose={() => setShowNewAccount(false)}
+        onClose={() => setShowNewContact(false)}
       >
         <Transition.Child
           as={Fragment}
@@ -49,10 +49,10 @@ export default function NewAccountDialog(props: any) {
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
-                      New Account
+                      New Contact
                     </Dialog.Title>
                     <div className="mt-2 sm:my-8 sm:w-full sm:p-6 md:h-[500px] md:max-h-[500px] lg:h-[800px] lg:max-h-[800px] overflow-y-auto">
-                      <NewAccountForm />
+                      <NewContactForm />
                     </div>
                   </div>
                 </div>

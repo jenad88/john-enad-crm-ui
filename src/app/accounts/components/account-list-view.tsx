@@ -129,7 +129,7 @@ export default function AccountListView() {
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {accounts.map((account) => (
                     <tr
-                      key={account.phone}
+                      key={account.id}
                       className={
                         selectedAccounts.includes(account)
                           ? "bg-gray-50"
@@ -143,7 +143,7 @@ export default function AccountListView() {
                         <input
                           type="checkbox"
                           className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                          value={account.phone}
+                          value={account.id}
                           checked={selectedAccounts.includes(account)}
                           onChange={(e) =>
                             setSelectedAccounts(
